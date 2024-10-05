@@ -4,6 +4,7 @@ option go_package = "github.com/manlikehenryy/grpc-task-manager/task";
 
 service TaskService {
     rpc CreateTask(CreateTaskRequest) returns (TaskResponse);
+    rpc GetAllTasks(GetAllTasksRequest) returns (GetAllTasksResponse);
     rpc GetTask(GetTaskRequest) returns (TaskResponse);
     rpc UpdateTask(UpdateTaskRequest) returns (TaskResponse);
     rpc DeleteTask(DeleteTaskRequest) returns (DeleteTaskResponse);
@@ -34,8 +35,14 @@ message DeleteTaskRequest {
     string id = 1;
 }
 
+message GetAllTasksRequest {}
+
 message TaskResponse {
     Task task = 1;
+}
+
+message GetAllTasksResponse {
+    repeated Task tasks = 1;
 }
 
 message DeleteTaskResponse {

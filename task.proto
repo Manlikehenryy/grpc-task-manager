@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+option go_package = "github.com/manlikehenryy/grpc-task-manager/task";
+
+service TaskService {
+    rpc CreateTask(CreateTaskRequest) returns (TaskResponse);
+    rpc GetTask(GetTaskRequest) returns (TaskResponse);
+    rpc UpdateTask(UpdateTaskRequest) returns (TaskResponse);
+    rpc DeleteTask(DeleteTaskRequest) returns (DeleteTaskResponse);
+}
+
+message Task {
+    string id = 1;
+    string title = 2;
+    string description = 3;
+}
+
+message CreateTaskRequest {
+    string title = 1;
+    string description = 2;
+}
+
+message GetTaskRequest {
+    string id = 1;
+}
+
+message UpdateTaskRequest {
+    string id = 1;
+    string title = 2;
+    string description = 3;
+}
+
+message DeleteTaskRequest {
+    string id = 1;
+}
+
+message TaskResponse {
+    Task task = 1;
+}
+
+message DeleteTaskResponse {
+    string message = 1;
+}
